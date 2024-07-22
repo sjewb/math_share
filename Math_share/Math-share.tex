@@ -1,0 +1,1046 @@
+\documentclass[lang=cn,newtx,10pt,scheme=chinese]{elegantbook}
+
+\title{数学分析}
+\subtitle{笔记分享}
+
+\author{An Ordinary Math Enthusiast}
+\institute{CHINA}
+\date{2024/7/21}
+\version{1.0.0}
+\bioinfo{自定义}{这是一份笔记分享，有错误还望指出批评}
+
+ \extrainfo{梦想可以大，但第一步总是小\\Dreams can be big, but the first step is always small.}
+
+\setcounter{tocdepth}{3}
+
+\logo{su5.png}
+\cover{su4.png}
+
+% 本文档命令
+\usepackage{array}
+\newcommand{\ccr}[1]{\makecell{{\color{#1}\rule{1cm}{1cm}}}}
+
+% 修改标题页的橙色带
+\definecolor{customcolor}{RGB}{32,178,170}
+\colorlet{coverlinecolor}{customcolor}
+\usepackage{cprotect}
+
+\addbibresource[location=local]{reference.bib} % 参考文献，不要删除
+
+\begin{document}
+
+\maketitle
+\frontmatter
+
+\tableofcontents
+
+\mainmatter
+
+\chapter{六大定理的相互证明}
+
+\begin{introduction}
+  \item 确界定理（实数系连续性定理）~\ref{def:int1}
+  \item 单调有界定理~\ref{thm:fubi2}
+  \item Cauchy定理~\ref{pro:max3}
+  \item 区间套定理~\ref{property:cauchy3}
+  \item 聚点定理 ~\ref{tabe222}
+  \item 有限覆盖定理（Heine-Borel定理）~\ref{pro:js5}
+\end{introduction}
+
+\begin{change}
+  \item 确界定理（实数系连续性定理）：非空有上界的实数集必有上确界，非空有下界的实数集必有下确界。
+  \item 单调有界定理：在实数系中，单调且有界的数列必定收敛。
+  \item Cauchy定理：数列 \(\{x_n\}\) 收敛的充要条件是 \(\{x_n\}\) 是基本（柯西）数列。
+  \item 区间套定理：若 \(\{[a_n, b_n]\}\) 形成一个闭区间套，则存在唯一的实数 \(\xi\) 属于所有的闭区间 \([a_n, b_n]\)，\(n = 1, 2, 3, \cdots\)，且 \( \xi \) 属于所有这些闭区间，并且有 \( \lim_{n \to \infty} b_n \) = \( \lim_{n \to \infty} a_n  \) =\( \xi \) 
+  \item 聚点定理、魏尔斯特拉斯定理、致密性定理、Bolzano-Weierstrass定理：
+    \begin{itemize}
+      \item 聚点定理：在一个有界序列中，至少存在一个聚点。
+      \item 魏尔斯特拉斯定理：每个有界数列都有至少一个聚点。
+      \item 致密性定理：一个集合是致密的当且仅当它的每一个开覆盖都有有限子覆盖。
+      \item Bolzano-Weierstrass定理：任何有界数列必有一个收敛的子序列。
+    \end{itemize}
+\begin{enumerate}
+  \item \textbf{聚点定理}：
+    \begin{itemize}
+      \item \textbf{定义}：在一个有界序列中，至少存在一个聚点。
+      \item \textbf{说明}：聚点是指序列中某一子序列的极限。如果一个序列是有界的，那么它至少有一个聚点。
+      \item \textbf{应用}：该定理说明了有界序列在某种意义上不会“散开”，一定存在某些点是序列的极限点。
+    \end{itemize}
+    
+  \item \textbf{魏尔斯特拉斯定理}（也称为\textbf{有界性原理}）：
+    \begin{itemize}
+      \item \textbf{定义}：每个有界数列都有至少一个聚点。
+      \item \textbf{说明}：这个定理与聚点定理基本一致，它强调了有界数列一定存在至少一个聚点。
+      \item \textbf{应用}：该定理是序列收敛性分析中的基础，特别是对于有界数列的性质研究。
+    \end{itemize}
+    
+  \item \textbf{致密性定理}：
+    \begin{itemize}
+      \item \textbf{定义}：一个集合是致密的当且仅当它的每一个开覆盖都有有限子覆盖。
+      \item \textbf{说明}：这个定理描述了致密集（通常称为紧致集或紧集）的特性。一个集合如果每一个开覆盖（即用开集覆盖整个集合）都可以找到一个有限的子覆盖，那么这个集合是致密的。
+      \item \textbf{应用}：致密性定理在拓扑学中非常重要，用于研究集合的极限性质和连续函数的性质。
+    \end{itemize}
+    
+  \item \textbf{Bolzano-Weierstrass定理}：
+    \begin{itemize}
+      \item \textbf{定义}：任何有界数列必有一个收敛的子序列。
+      \item \textbf{说明}：这个定理指出，有界数列总是可以找到一个收敛的子序列。这意味着有界数列在某种程度上总是可以提取出一个收敛的部分。
+      \item \textbf{应用}：Bolzano-Weierstrass定理在分析学中广泛应用，特别是在证明各种关于收敛性的命题时。
+    \end{itemize}
+\end{enumerate}
+
+总结：
+\begin{itemize}
+  \item \textbf{聚点定理}和\textbf{魏尔斯特拉斯定理}主要关注有界数列的聚点存在性。
+  \item \textbf{致密性定理}关注的是集合的覆盖性质，是一个拓扑学定理。
+  \item \textbf{Bolzano-Weierstrass定理}进一步说明了有界数列不仅有聚点，而且必有一个收敛的子序列。
+\end{itemize}
+
+它们各自从不同的角度描述了数列和集合的性质，在数学分析和拓扑学中都有着广泛的应用。
+
+  \item 有限覆盖定理（Heine-Borel 定理）：
+    \begin{itemize}
+      \item \textbf{定义}：一个集合是紧的当且仅当它是闭且有界的；设 $H$ 为闭区间 $[a,b]$ 的一个（无限）开覆盖，则从 $H$ 中可选出有限个开区间来覆盖 $[a,b]$。
+      \item \textbf{说明}：如果一个开覆盖 \( S \) 覆盖了闭区间 \([a, b]\)，即 \([a, b] \subseteq \bigcup_{i \in I} U_i\)，其中 \( U_i \) 是 \( S \) 中的开区间，则存在有限个开区间 \( U_{i_1}, U_{i_2}, \ldots, U_{i_n} \) 使得 \([a, b] \subseteq \bigcup_{j=1}^n U_{i_j}\)。
+    \end{itemize}
+
+\end{change}
+
+
+\begin{note}
+\begin{enumerate}
+    \item \textbf{有界集}：\\
+    集合 \( A \subseteq \mathbb{R} \) 称为有界的，如果存在实数 \( M \) 使得对于所有 \( x \in A \)，有 \( |x| \leq M \)。即集合 \( A \) 的所有元素都被限制在一个有限的范围内。
+
+    \item \textbf{上（下）确界}：\\
+    给定一个非空的有上界集合 \( S \subseteq \mathbb{R} \)，上确界（或称为最小上界） \( \sup S \) 是满足下列条件的唯一实数：
+    \begin{enumerate}
+        \item 对于所有 \( x \in S \)，有 \( x \leq \sup S \)。
+        \item 如果 \( y \) 是任意上界，则 \( \sup S \leq y \)。
+    \end{enumerate}
+    类似地，集合 \( S \) 的下确界（或称为最大下界） \( \inf S \) 定义为：
+    \begin{enumerate}
+        \item 对于所有 \( x \in S \)，有 \( x \geq \inf S \)。
+        \item 如果 \( z \) 是任意下界，则 \( \inf S \geq z \)。
+    \end{enumerate}
+
+    \item \textbf{数列收敛}：\\
+    数列 \( \{a_n\} \) 称为收敛的，如果存在实数 \( L \) 使得对于任意 \( \epsilon > 0 \)，存在正整数 \( N \) 使得当 \( n \geq N \) 时，\( |a_n - L| < \epsilon \)。此时，\( L \) 被称为数列 \( \{a_n\} \) 的极限，记作 \( \lim_{n \to \infty} a_n = L \)。
+
+    \item \textbf{闭区间套}：\\
+    一列闭区间 \( \{[a_n, b_n]\} \) 称为闭区间套，如果对于所有 \( n \) 都有 \( [a_{n+1}, b_{n+1}] \subseteq [a_n, b_n] \)，且 \( \lim_{n \to \infty} (b_n - a_n) = 0 \)。根据闭区间套定理，存在唯一的实数 \( \xi \)，使得 \( \xi \) 属于所有这些闭区间，即 \( \xi \in \bigcap_{n=1}^{\infty} [a_n, b_n] \)。
+
+    \item \textbf{聚点  邻域  开集}：
+    \begin{enumerate}
+        \item \textbf{聚点}：\\
+        如果对于任意 \( \epsilon > 0 \)，在区间 \( (x - \epsilon, x + \epsilon) \) 内包含集合 \( A \) 的无限多个点，则称 \( x \) 是集合 \( A \) 的一个聚点。
+        \item \textbf{邻域}：\\
+        一个点 \( x \) 的 \( \epsilon \)-邻域定义为开区间 \( (x - \epsilon, x + \epsilon) \)。
+        \item \textbf{开集}：\\
+        集合 \( G \subseteq \mathbb{R} \) 称为开集，如果对于集合 \( G \) 中的任意一点 \( x \)，存在 \( x \) 的一个邻域完全包含于 \( G \) 中。
+    \end{enumerate}
+
+    \item \textbf{基本数列}：\\
+    数列 \( \{a_n\} \) 称为基本数列（或柯西数列），如果对于任意 \( \epsilon > 0 \)，存在正整数 \( N \)，使得当 \( m, n \geq N \) 时，有 \( |a_n - a_m| < \epsilon \)。根据柯西收敛定理，数列 \( \{a_n\} \) 收敛的充要条件是它是一个基本数列。
+\end{enumerate}
+\end{note}
+%\newpage
+
+\begin{theorem}[确界定理（实数系连续性定理）] \label{def:int1}
+（1）非空有上界的实数集必有上确界，非空有下界的实数集必有下确界。
+
+（2）设 $S$ 是实数集 $\mathbb{R}$ 的一个非空子集，且 $S$ 有上界，则 $S$ 在 $\mathbb{R}$ 中有一个上确界。
+
+\[
+\forall S \subseteq \mathbb{R}, S \neq \emptyset \text{ 且 } \exists u \in \mathbb{R} \text{ 使得 } \forall x \in S, x \leq u, \exists \sup S \in \mathbb{R} \text{ 使得 } \sup S = \inf \{u \in \mathbb{R} \mid \forall x \in S, x \leq u\}
+\]
+
+\end{theorem}
+
+\section*{确界存在定理 $\Rightarrow$ 单调有界定理   }
+
+\textbf{证明:} 设数列 $\{x_n\}$ 是单调增加且有上界，令 $S = \{x_1, x_2, \ldots\}$，根据\textcolor{red}{确界存在定理}，存在 $\beta \in \mathbb{R}$，使得 $\beta = \sup S$，满足如下条件：
+\begin{enumerate}
+    \item $\forall x_k \in S, k \in \mathbb{N}^{+}$，有 $\beta \geq x_k$；
+    \item $\forall \varepsilon > 0$，$\exists n_0 \in \mathbb{N}^{+}$ 使得 $x_{n_0} + \varepsilon > \beta$。
+\end{enumerate}
+
+于是 $\forall \varepsilon > 0$，$\exists N = n_0$，$\forall n > N$，有 $x_n + \varepsilon \geq x_N + \varepsilon > \beta > x_n > x_n - \varepsilon$。
+
+因此 $\forall \varepsilon > 0$，$\exists N = n_0$，$\forall n > N$，有$\beta - \varepsilon<  x_n < \beta + \varepsilon$
+\[
+\lim_{n \to \infty} x_n = \beta。
+\]
+
+\section*{确界存在定理 $\Rightarrow$ Cauchy 收敛原理  }   
+
+\textbf{证明:} (必要性)先证数列 $\{x_n\}$ 收敛 $\Rightarrow$ 数列 $\{x_n\}$ 是基本数列。\\
+设 $\lim_{n \to \infty} x_n = a$，则 $\forall \varepsilon > 0$，$\exists N \in \mathbb{N}^{+}$，使得
+\[
+\forall n, m > N, \, 都有 \, |x_{n,m} - a| < \frac{\varepsilon}{2}, \, 从而 \, |x_n - x_m| \leq |x_n - a| + |x_m - a| < \varepsilon，
+\]
+因此数列 $\{x_n\}$ 是基本数列。
+
+再证（充分性）数列 $\{x_n\}$ 是基本数列 $\Rightarrow$ 数列 $\{x_n\}$ 收敛。\\
+设数列 $\{x_n\}$ 是基本数列，则数列 $\{x_n\}$ 有界，$\forall \varepsilon > 0$，$\exists N \in \mathbb{N}^{+}$，$\forall n, m > N$，都有 $|x_n - x_m| < \varepsilon$。取定 $\varepsilon = 1$ 时，存在 $N_1 \in \mathbb{N}^{+}$ 使得
+\[
+\forall n > N_1, \, |x_n - x_{N_1}| < \varepsilon,
+\]
+于是 $M = \max\{x_1, x_2, \ldots, x_{N_1}, |x_{N_1}| + 1\}$ 是数列 $\{x_n\}$ 的一个上界，
+\[
+m = \min\{x_1, x_2, \ldots, x_{N_1}, -1\}
+\]
+是数列 $\{x_n\}$ 的一个下界。因此数列 $\{x_n\}$ 有界。下说明数列 $\{x_n\}$ 收敛。\\
+令 $S = \{x_n\}$ ，数列 $\{x_n\}$ 中小于 $x$ 的数只有有限个，显然数集 $S$ 有界，根据 \textcolor{red}{确界存在定理}，数集 $S$ 必有上确界，设 $\beta = \sup S$，则 $\forall \varepsilon > 0$，$\beta - \varepsilon \in S$，$\beta + \varepsilon \notin S$，从而 $(\beta - \varepsilon, \beta + \varepsilon)$ 中含有数列 $\{x_n\}$ 中无限项，于是存在数列 $\{x_{n_k}\}$ 的子列，使得
+\[
+\lim_{k \to \infty} x_{n_k} = \beta，
+\]
+又数列 $\{x_n\}$ 是基本数列，$\forall \varepsilon > 0$，$\exists N \in \mathbb{N}^{+}$，$\forall n, m > N$，$|x_n - x_m| < \varepsilon$，取 $\varepsilon = \frac{\varepsilon}{2}$，$\forall n > N$，$k > K$ 有
+\[
+|x_n - \beta| \leq |x_n - x_{n_k}| + |x_{n_k} - \beta| < \varepsilon，
+\]
+因此数列 $\{x_n\}$ 收敛，证毕。
+
+
+\section*{确界存在定理 $\Rightarrow$ 闭区间套定理}
+\textbf{证明:} 设一列闭区间 $\{[a_n, b_n]\}$ 形成一个闭区间套，则数集 $S = \{a_1, a_2, \ldots\}$ （$S$ 如果有相同的数则只算作一个）有上界，而且 $b_n, n = 1, 2, 3, \ldots$ 都是数集 $S$ 的上界，存在性，根据 \textcolor{red}{确界存在定理}，数集 $S$ 有上确界（最小上界），记为 $\alpha = \sup S$，于是
+\begin{enumerate}
+    \item $\forall n \in \mathbb{N}^{+}$，$\alpha \geq a_n$；
+    \item $\forall \varepsilon > 0$，$\exists N \in \mathbb{N}^{+}$，使得 $a_N + \varepsilon > \alpha$，由 (1) 知 $a_n \leq \alpha \leq b_n$，$n = 1, 2, 3, \ldots$，由 (2) 知
+\end{enumerate}
+
+\[
+\lim_{n \to \infty} a_n = \alpha， \quad \text{又} \quad \lim_{n \to \infty} (b_n - a_n) = 0， \quad \text{可知} \quad \lim_{n \to \infty} b_n = \alpha。
+\]
+
+唯一性，若另有 $\alpha'$，使得 $a_n \leq \alpha' \leq b_n，n = 1, 2, 3, \ldots$，且
+\[
+\lim_{n \to \infty} a_n = \lim_{n \to \infty} b_n = \alpha'，
+\]
+由 $\lim_{n \to \infty} (b_n - a_n) = 0$，可知 $\alpha = \alpha'$，证毕。
+
+\section*{确界存在定理 $\Rightarrow$ 聚点定理}
+
+\textbf{证明:} 设 $S$ 是有界无穷集，根据 \textcolor{red}{确界存在定理}，数集 $S$ 有上下确界，令 $\alpha = \inf S$，$\beta = \sup S$。若 $\alpha, \beta$ 其中有一点不是数集 $S$ 的孤立点，则此点必为聚点。反设，假设 $\alpha, \beta$ 其中都是数集 $S$ 的孤立点，令
+\[
+E = \{x \mid \text{数集 } S \text{ 中仅有有限个数小于 } x, x \in \mathbb{R}\}
+\]
+显然 $E$ 有上界，根据 \textcolor{red}{确界存在定理}，数集 $E$ 有上确界，令 $\beta' = \sup E$，因此 $\forall \varepsilon > 0$，$\beta' + \varepsilon \notin E$，$\beta' - \varepsilon \in E$，于是
+\[
+(\beta' - \varepsilon, \beta' + \varepsilon) \text{ 中含有 } S \text{ 中无穷点}, \text{从而 } \beta' \text{ 是 } S \text{ 的聚点，证毕}。
+\]
+
+\section*{确界存在定理 $\Rightarrow$ 有限覆盖定理}
+
+\textbf{证明:} 设闭区间 $[a, b]$ 在实数 $R$ 上，任取闭区间 $[a, b]$ 的一个开覆盖 $\{O_{\lambda}\}$，令
+\[
+D = \{x | x \in [a, b], 且 \exists [a, x] \text{ 能被 } \{O_{\lambda}\} \text{ 的有限子集覆盖}\}，
+\]
+下说明集合 $D$ 是非空有界的。\\
+$\{O_{\lambda}\}$ 是闭区间 $[a, b]$ 的一个开覆盖，则存在 $\{O_{\lambda}\}$ 的一个开区间 $O_a$，使得 $a \in O_a$，于是 $a \in D$，从而集合 $D$ 非空，又显然 $D \subseteq [a, b]$，从而集合 $D$ 是有界的，因此集合 $D$ 是非空有界的。
+
+根据 \textcolor{red}{确界存在定理}，集合 $D$ 有上确界，设 $\xi = \sup D$，下说明 $\xi = b$。假设 $\xi < b$，则 $\xi < b$，$[a, \xi]$ 能被 $\{O_{\lambda}\}$ 的有限子集 $O_{\lambda_1}, O_{\lambda_2}, \ldots, O_{\lambda_n}$ 覆盖，又 $\xi \in [a, b]$，则存在 $\{O_{\lambda}\}$ 的一个开区间 $(\alpha, \beta)$ 使得 $\xi \in (\alpha, \beta)$，任取 $x_1 \in (\xi, \beta)$，易知 $[a, x_1]$ 可被 $\{O_{\lambda_1}, O_{\lambda_2}, \ldots, O_{\lambda_n}\}$ 覆盖。从而 $x_1 \in D$，而 $x_1 > \xi$ 与 $\xi = \sup D$ 矛盾，证毕。
+
+
+
+\begin{theorem}[单调有界定理] \label{thm:fubi2}
+（1）在实数系中，单调且有界的数列必定收敛。
+
+（2）\begin{enumerate}
+    \item 如果数列 $\{a_n\}$ 是单调增加的，并且有上界，那么 $\{a_n\}$ 收敛。
+    \item 如果数列 $\{a_n\}$ 是单调减少的，并且有下界，那么 $\{a_n\}$ 收敛。
+\end{enumerate}
+
+\end{theorem}
+
+\section*{单调有界定理 $\Rightarrow$ 确界存在定理}
+
+\textbf{证明:} 设 $S$ 是非空有上界数集，任取它的一个上界 $b$，则 $S \subseteq [a, b]$，其中 $a \in S$。
+
+对 $[a, b]$ 二等分为 $\left[ a, \frac{a + b}{2} \right]$ 和 $\left[ \frac{a + b}{2}, b \right]$，若 $\frac{a + b}{2}$ 非 $S$ 的上界，则记 $[a_1, b_1] = \left[ a, \frac{a + b}{2} \right]$，否则记 $[a_1, b_1] = \left[ \frac{a + b}{2}, b \right]$。
+
+对 $[a_1, b_1]$ 继续二等分为 $\left[ a_1, \frac{a_1 + b_1}{2} \right]$ 和 $\left[ \frac{a_1 + b_1}{2}, b_1 \right]$，若 $\frac{a_1 + b_1}{2}$ 非 $S$ 的上界，则记 $[a_2, b_2] = \left[ a_1, \frac{a_1 + b_1}{2} \right]$，否则记 $[a_2, b_2] = \left[ \frac{a_1 + b_1}{2}, b_1 \right]$。
+
+如此递推，对 $[a_{n-1}, b_{n-1}]$ 二等分为 $\left[ a_{n-1}, \frac{a_{n-1} + b_{n-1}}{2} \right]$ 和 $\left[ \frac{a_{n-1} + b_{n-1}}{2}, b_{n-1} \right]$，若 $\frac{a_{n-1} + b_{n-1}}{2}$ 非 $S$ 的上界，则记 $[a_n, b_n] = \left[ a_{n-1}, \frac{a_{n-1} + b_{n-1}}{2} \right]$，否则记 $[a_n, b_n] = \left[ \frac{a_{n-1} + b_{n-1}}{2}, b_{n-1} \right]$。
+
+由此，得到一列闭区间 $\{[a_n, b_n]\}$。
+
+易知数列 $\{a_n\}$ 单调增加有上界，数列 $\{b_n\}$ 单调减少有下界且 $\forall x \in S$ 有 $b \geq x$。根据单调有界定理，可知 $\{a_n\}$ 与 $\{b_n\}$ 均收敛，存在 $\xi \in \mathbb{R}$，使得 $\lim_{n \to \infty} b_n =  \xi $，又
+\[
+|a_n - b_n| = \left( \frac{1}{2} \right)^n (b - a)，
+\]
+因此 $\lim_{n \to \infty} a_n = \lim_{n \to \infty} b_n =  \xi $。
+
+下说明 $\xi $ 是 $S$ 的上确界：
+\begin{enumerate}
+    \item $\forall x \in S$，有 $\xi  \geq x$；
+    \item $\forall \varepsilon > 0$，$\exists N \in \mathbb{N}^{+}$，使得 $\xi - a_n < \varepsilon$，即 $\xi < a_n + \varepsilon$，其中 $a_n \in S$。
+\end{enumerate}
+
+综上所述，$\xi $ 为 $S$ 的上确界。证毕。
+
+
+\section*{单调有界定理 $\Rightarrow$ Cauchy 收敛原理}
+
+\textbf{证明:}(必要条件) 先证数列 $\{x_n\}$ 收敛 $\Rightarrow$ 数列 $\{x_n\}$ 是基本数列。\\
+设 $\lim_{n \to \infty} x_n = a$，则 $\forall \varepsilon > 0$，$\exists N \in \mathbb{N}^+$，使得
+\[
+\forall n, m > N, \, 都有 \, |x_n - a| < \frac{\varepsilon}{2}, \, |x_m - a| < \frac{\varepsilon}{2}，
+\]
+从而
+\[
+|x_n - x_m| \leq |x_n - a| + |x_m - a| < \varepsilon，
+\]
+因此数列 $\{x_n\}$ 是基本数列。
+
+再证（充分条件）数列 $\{x_n\}$ 是基本数列 $\Rightarrow$ 数列 $\{x_n\}$ 收敛。\\
+设数列 $\{x_n\}$ 是基本数列，下说明数列 $\{x_n\}$ 有界。$\forall \varepsilon > 0$，$\exists N \in \mathbb{N}^+$，$\forall n, m > N$，都有 $|x_n - x_m| < \varepsilon$。取定 $\varepsilon = 1$ 时，存在 $N_1 \in \mathbb{N}^+$，使得
+\[
+\forall n > N_1, \, |x_n - x_{N_1}| < 1，
+\]
+于是 $M = \max \{x_1, x_2, \ldots, x_{N_1}, |x_{N_1}| + 1\}$ 是数列 $\{x_n\}$ 的一个上界，
+\[
+m = \min \{x_1, x_2, \ldots, x_{N_1}, -1\}
+\]
+是数列 $\{x_n\}$ 的一个下界，因此数列 $\{x_n\}$ 有界。下说明数列 $\{x_n\}$ 收敛。将 $[m, M]$ 均分为
+\[
+\left[m, \frac{m + M}{2}\right], \left[\frac{m + M}{2}, M\right]，
+\]
+则必有其中之一闭区间含有 $\{x_n\}$ 中无穷个点，记此闭区间为 $[m_1, M_1]$。将 $[m_1, M_1]$ 均分为
+\[
+\left[m_1, \frac{m_1 + M_1}{2}\right], \left[\frac{m_1 + M_1}{2}, M_1\right]，
+\]
+则必有其中之一闭区间含有 $\{x_n\}$ 中无穷个点，记此闭区间为 $[m_2, M_2]$。如此一直下去，得到一列闭区间 $\{[m_n, M_n]\}$，且
+\[
+\lim_{n \to \infty} (M_n - m_n) = \lim_{n \to \infty} \frac{1}{2^n} (M - m) = 0，
+\]
+易知数列 $\{m_n\}$ 单调增加，数列 $\{M_n\}$ 单调减少，根据 \textcolor{red}{单调有界定理}，存在实数 $\alpha, \beta$ 使得
+\[
+\lim_{n \to \infty} m_n = \alpha, \quad \lim_{n \to \infty} M_n = \beta，
+\]
+且
+\[
+m_n \leq \alpha \leq \beta \leq M_n， \quad n = 1, 2, 3, \ldots
+\]
+可知 $\lim_{n \to \infty} m_n = \alpha = \beta = \lim_{n \to \infty} M_n$。\\
+令每个 $[m_n, M_n]$ 中取一个 $\{x_n\}$ 中的元素记为 $x_{n_k}$，其中 $x_n$ 与 $x_{n_{k-1}}$ 相异，易知 $\lim_{k \to \infty} x_{n_k} = \alpha$。又数列 $\{x_n\}$ 是基本数列，
+\[
+\forall \varepsilon > 0,\exists N \in \mathbb{N}^+, \forall n, m > N, \, |x_n - x_m| < \frac{\varepsilon}{2}。
+\]
+而根据 $\lim_{k \to \infty} x_{n_k} = \alpha$ 有
+\[
+\forall \varepsilon > 0, \exists K \in \mathbb{N}^+, n_k > N,k > K,\text{有} \, |x_{n_k} - \alpha| < \frac{\varepsilon}{2}。
+\]
+于是 $\forall \varepsilon > 0，\forall n > N，k > K$ 有
+\[
+|x_n - \alpha| \leq |x_n - x_{n_k}| + |x_{n_k} - \alpha| < \varepsilon，
+\]
+因此数列 $\{x_n\}$ 收敛，证毕。
+
+
+\section*{单调有界定理 $\Rightarrow$ 闭区间套定理}
+
+\textbf{证明:} 设一列闭区间 $\{[a_n, b_n]\}$ 形成一个闭区间套，则数列 $\{a_n\}$ 单调递增有上界，数列 $\{b_n\}$ 单调递减有下界，\textbf{存在性}，根据 \textcolor{red}{单调有界定理}，存在实数 $\alpha, \beta$ 使得 $\lim_{n \to \infty} a_n = \alpha$，$\lim_{n \to \infty} b_n = \beta$，又 $\lim_{n \to \infty} (b_n - a_n) = 0$，又有
+\[
+a_n \leq \alpha \leq \beta \leq b_n，\quad n = 1, 2, 3, \ldots
+\]
+可知 $\lim_{n \to \infty} a_n = \alpha = \beta = \lim_{n \to \infty} b_n$。\textbf{唯一性}，若另有 $\alpha'$，使得 $a_n \leq \alpha' \leq b_n，\quad n = 1, 2, 3, \ldots$ 且 $\lim_{n \to \infty} a_n = \lim_{n \to \infty} b_n = \alpha'$，由 $\lim_{n \to \infty} (b_n - a_n) = 0$，可知 $\alpha = \alpha'$，证毕。
+
+
+
+
+\section*{单调有界定理 $\Rightarrow$ 聚点定理}
+
+\subsection*{方法一}
+\textbf{证明:} 设 $S$ 是有界无穷点集，取存在闭区间 $[a, b]$，使得 $S \subseteq [a, b]$。将 $[a, b]$ 均分为
+\[
+\left[ a, \frac{a + b}{2} \right], \left[ \frac{a + b}{2}, b \right]，
+\]
+则必在其中之一闭区间含有 $S$ 中无穷个点，记此闭区间为
+\[
+\left[ a_1, b_1 \right] = \left[ a, \frac{a + b}{2} \right] \text{ 或 } \left[ \frac{a + b}{2}, b \right]。
+\]
+将 $[a_1, b_1]$ 均分为
+\[
+\left[ a_1, \frac{a_1 + b_1}{2} \right], \left[ \frac{a_1 + b_1}{2}, b_1 \right]，
+\]
+则必在其中之一闭区间含有 $S$ 中无穷个点，记此闭区间为
+\[
+\left[ a_2, b_2 \right] = \left[ a_1, \frac{a_1 + b_1}{2} \right] \text{ 或 } \left[ \frac{a_1 + b_1}{2}, b_1 \right]。
+\]
+如此一直下去，得到一列闭区间 $\{[a_n, b_n]\}$，且 $\lim_{n \to \infty} (b_n - a_n) = \lim_{n \to \infty} \frac{1}{2^n} (b - a) = 0$，易知数列 $\{a_n\}$ 单调增加，数列 $\{b_n\}$ 单调减少，根据 \textcolor{red}{单调有界定理}，存在实数 $\alpha, \beta$ 使得
+\[
+\lim_{n \to \infty} a_n = \alpha, \quad \lim_{n \to \infty} b_n = \beta，
+\]
+且
+\[
+a_n \leq \alpha \leq \beta \leq b_n， \quad n = 1, 2, 3, \ldots
+\]
+可知
+\[
+\lim_{n \to \infty} a_n = \alpha = \beta = \lim_{n \to \infty} b_n。
+\]
+下说明 $\alpha$ 是 $S$ 的一个聚点。在每个 $[a_n, b_n]$ 中取一个 $S$ 中的元素记为 $x_n$，易知 $\lim_{n \to \infty} x_n = \alpha$，因此 $\alpha$ 是 $S$ 的聚点，证毕。
+
+\subsection*{方法二（证明致密性定理）}
+\textbf{证明:} 先说明任意有界数列必有单调子列，设 $\{x_n\}$ 是一个有界数列，定义数列 $\{x_n\}$ 中的第 $k$ 项 $x_k$ 具有性质 $A$ 是指：$x_k = \max \{x_i | i \geq k\}$。
+
+情形一，数列 $\{x_n\}$ 中有无限项具有性质 $A$，不妨设为 $x_{n_1}, x_{n_2}, \ldots, x_{n_k}, \ldots$，其中
+\[
+n_1 < n_2 < \cdots < n_k < \cdots，
+\]
+则数列 $\{x_{n_k}\}$ 单调减少且有界；
+
+情形二，数列 $\{x_n\}$ 中只有有限项具有性质 $A$，则存在 $N \in \mathbb{N}^+$，$\forall n > N$，$x_n$ 都不具有性质 $A$。任取一项记作 $x_{n_1}$，其中 $n_1 > N$，由于 $x_{n_1}$ 不具有性质 $A$，则必存在 $n_2 > n_1$ 使得 $x_{n_2} > x_{n_1}$，由于 $x_{n_2}$ 不具有性质 $A$，则必存在 $n_3 > n_2$ 使得 $x_{n_3} > x_{n_2}$，如此继续下去可以得到一个单调增加的数列 $\{x_{n_k}\}$。
+
+从而证明了任意有界数列必有单调子列。根据 \textcolor{red}{单调有界定理}，数列 $\{x_{n_k}\}$ 必收敛，于是对于任意无界数集 $S$，必有聚点。
+
+\section*{单调有界定理 $\Rightarrow$ 有限覆盖定理}
+
+\textbf{证明:} 设闭区间 $[a, b]$ 在实数 $R$ 上，任取闭区间 $[a, b]$ 的一个开覆盖 $\{O_{\lambda}\}$，反证法，假设闭区间 $[a, b]$ 不能被 $\{O_{\lambda}\}$ 的有限个子集覆盖。将 $[a, b]$ 二等分为
+\[
+\left[ a, \frac{a + b}{2} \right], \left[ \frac{a + b}{2}, b \right]，
+\]
+至少有其中之一不能被 $\{O_{\lambda}\}$ 的有限个子集覆盖，将此区间记为 $[a_1, b_1]$。将 $[a_1, b_1]$ 二等分为
+\[
+\left[ a_1, \frac{a_1 + b_1}{2} \right], \left[ \frac{a_1 + b_1}{2}, b_1 \right]，
+\]
+至少有其中之一不能被 $\{O_{\lambda}\}$ 的有限个子集覆盖，将此区间记为 $[a_2, b_2]$。如此下去，便可得到一列闭区间 $\{[a_n, b_n]\}$，且 $\lim_{n \to \infty} (b_n - a_n) = \lim_{n \to \infty} \frac{1}{2^n} (b - a) = 0$。易知数列 $\{a_n\}$ 单调增加，数列 $\{b_n\}$ 单调减少，根据 \textcolor{red}{单调有界定理}，数列 $\{a_n\}$，$\{b_n\}$ 收敛，又
+\[
+\lim_{n \to \infty} (b_n - a_n) = 0，
+\]
+可知存在 $\xi$，使得
+\[
+\lim_{n \to \infty} a_n = \lim_{n \to \infty} b_n = \xi，\quad a_n \leq \xi \leq b_n，\quad n = 1, 2, \ldots。
+\]
+
+由于存在 $\{O_{\lambda}\}$ 的一个开区间 $O_{\lambda^*}$，使得 $\xi \in O_{\lambda^*}$，当 $n$ 充分大时，必有 $[a_n, b_n] \subseteq O_{\lambda^*}$ 与 $[a, b]$ 不能被 $\{O_{\lambda}\}$ 的有限个子集覆盖矛盾，因此存在 $\{O_{\lambda}\}$ 的有限个子集覆盖闭区间 $[a, b]$，证毕。
+
+
+\begin{theorem}[Cauchy 收敛准则] \label{pro:max3}
+（1）数列 \(\{x_n\}\) 收敛的充要条件是 \(\{x_n\}\) 是柯西数列。
+
+（2）一个实数数列 $\{a_n\}$ 收敛，当且仅当对任意的 $\varepsilon > 0$，存在一个正整数 $N$，使得当 $n, m > N$ 时，满足
+\[
+|a_n - a_m| < \varepsilon。
+\]
+那么数列 $\{a_n\}$ 是收敛的。
+\end{theorem}
+
+\section*{Cauchy 收敛准则 $\Rightarrow$ 确界存在定理}
+
+\textbf{证明:} 设 $S$ 是非空有上界数集，任取它的一个上界 $b \notin S$，任取 $a \in S$，则 $S \subseteq [a, b]$。将 $[a, b]$ 均分为
+\[
+\left[ a, \frac{a + b}{2} \right], \left[ \frac{a + b}{2}, b \right]，
+\]
+若 $\frac{a + b}{2}$ 非 $S$ 的上界，则记 $[a_1, b_1] = \left[ a, \frac{a + b}{2} \right]$，否则记 $[a_1, b_1] = \left[ \frac{a + b}{2}, b \right]$。对 $[a_1, b_1]$ 均分为
+\[
+\left[ a_1, \frac{a_1 + b_1}{2} \right], \left[ \frac{a_1 + b_1}{2}, b_1 \right]，
+\]
+若 $\frac{a_1 + b_1}{2}$ 非 $S$ 的上界，则记 $[a_2, b_2] = \left[ a_1, \frac{a_1 + b_1}{2} \right]$，否则记 $[a_2, b_2] = \left[ \frac{a_1 + b_1}{2}, b_1 \right]$。依此类推，对 $[a_{n-1}, b_{n-1}]$ 均分为
+\[
+\left[ a_{n-1}, \frac{a_{n-1} + b_{n-1}}{2} \right], \left[ \frac{a_{n-1} + b_{n-1}}{2}, b_{n-1} \right]，
+\]
+若 $\frac{a_{n-1} + b_{n-1}}{2}$ 非 $S$ 的上界，则记 $[a_n, b_n] = \left[ a_{n-1}, \frac{a_{n-1} + b_{n-1}}{2} \right]$，否则记 $[a_n, b_n] = \left[ \frac{a_{n-1} + b_{n-1}}{2}, b_{n-1} \right]$。依此类推，得到一列闭区间 $\{[a_n, b_n]\}$。易知 $\{[a_n, b_n]\}$ 满足：
+\begin{enumerate}
+    \item $\{[a_n, b_n]\} \subseteq [a, b]$，且 $\{[a_{n+1}, b_{n+1}]\} \subseteq [a_n, b_n]$，$n = 1, 2, 3, \ldots$；
+    \item $\lim_{n \to \infty} (b_n - a_n) = \lim_{n \to \infty} \left(\frac{1}{2}\right)^n (b - a) = 0$。
+\end{enumerate}
+
+因此，$\{[a_n, b_n]\}$ 形成一个闭区间套。$\forall \varepsilon > 0$，$\exists N \in \mathbb{N}^+$，使得 $\left(\frac{1}{2}\right)^N (b - a) < \varepsilon$，则 $\forall n, m > N$，有
+\[
+|a_n - a_m| < |a_n - b_n| = \left(\frac{1}{2}\right)^n (b - a) < \varepsilon，
+\]
+\[
+|b_n - b_m| < |b_n - a_n| = \left(\frac{1}{2}\right)^n (b - a)  < \varepsilon，
+\]
+因此数列 $\{a_n\}$，$\{b_n\}$ 均是基本数列。根据 \textcolor{red}{Cauchy 收敛准则}，$\{a_n\}$，$\{b_n\}$ 均收敛，设 $\lim_{n \to \infty} a_n = \lim_{n \to \infty} b_n = \xi$，下说明 $\xi$ 是 $S$ 的上确界。\\
+$\forall x \in S$，有 $x \leq \xi$；$\forall \varepsilon > 0$，$\exists N \in \mathbb{N}^+$，有$n> N$,使得 $a_n \leq x < \xi + \varepsilon$，即 $b_n \leq \xi + \varepsilon$，从而 $b_n \in S$。综上，$\xi$ 是 $S$ 的上确界，证毕。
+
+
+\section*{Cauchy 收敛准则 $\Rightarrow$ 单调有界定理}
+
+\textbf{证明:} 设数列 $\{x_n\}$ 是单调增加有上界，令 $S = \{x_1, x_2, \ldots\}$，任取它的一个上界 $b \notin S$，任取 $a \in S$，则 $S \subseteq [a, b]$。对 $[a, b]$ 二等分为
+\[
+\left[ a, \frac{a + b}{2} \right], \left[ \frac{a + b}{2}, b \right]，
+\]
+若 $\frac{a + b}{2}$ 非 $S$ 的上界，则记 $[a_1, b_1] = \left[ a, \frac{a + b}{2} \right]$，否则记 $[a_1, b_1] = \left[ \frac{a + b}{2}, b \right]$。对 $[a_1, b_1]$ 二等分为
+\[
+\left[ a_1, \frac{a_1 + b_1}{2} \right], \left[ \frac{a_1 + b_1}{2}, b_1 \right]，
+\]
+若 $\frac{a_1 + b_1}{2}$ 非 $S$ 的上界，则记 $[a_2, b_2] = \left[ a_1, \frac{a_1 + b_1}{2} \right]$，否则记 $[a_2, b_2] = \left[ \frac{a_1 + b_1}{2}, b_1 \right]$。依此类推，对 $[a_{n-1}, b_{n-1}]$ 二等分为
+\[
+\left[ a_{n-1}, \frac{a_{n-1} + b_{n-1}}{2} \right], \left[ \frac{a_{n-1} + b_{n-1}}{2}, b_{n-1} \right]，
+\]
+若 $\frac{a_{n-1} + b_{n-1}}{2}$ 非 $S$ 的上界，则记 $[a_n, b_n] = \left[ a_{n-1}, \frac{a_{n-1} + b_{n-1}}{2} \right]$，否则记 $[a_n, b_n] = \left[ \frac{a_{n-1} + b_{n-1}}{2}, b_{n-1} \right]$。依此类推，得到一列闭区间 $\{[a_n, b_n]\}$。$\forall \varepsilon > 0$，由
+\[
+b_n - a_n = \frac{1}{2^n} (b - a)，
+\]
+可知 $\exists N \in \mathbb{N}^+$，$n>N$,使得 $\frac{1}{2^n} (b - a) < \varepsilon$，于是 $\forall n, m > N$，有
+\[
+|a_n - a_m| < |b_n - a_n| < \varepsilon， \quad |b_n - b_m| < |b_n - a_n| < \varepsilon，
+\]
+因此数列 $\{a_n\}$，$\{b_n\}$ 是 Cauchy 数列，根据 \textcolor{red}{Cauchy 收敛准则}，数列 $\{a_n\}$，$\{b_n\}$ 都收敛，且由 $\lim_{n \to \infty} (b_n - a_n) = \frac{1}{2^n} (b - a) = 0$ 知，
+\[
+\lim_{n \to \infty} a_n = \lim_{n \to \infty} b_n = \xi。
+\]
+
+在$[a_n, b_n]$ 中取某个 $x_n^k \in \{x_1, x_2, \ldots\}$，于是有 $\{x_n^k\}$ 的子列收敛到 $\xi$，即 $\lim_{k \to \infty} x_n^k = \xi$，易知 $\lim_{n \to \infty} x_n = \xi$
+
+
+
+\section*{Cauchy 收敛准则 $\Rightarrow$ 闭区间套定理}
+
+\textbf{证明:} 设一列闭区间 $\{[a_n, b_n]\}$ 形成一个闭区间套，存在性，由 $\lim_{n \to \infty} (b_n - a_n) = 0$ 知，$\forall \varepsilon > 0$，$\exists N \in \mathbb{N}^+$，使得 $b_n - a_n < \varepsilon$，于是 $\forall n, m > N$，有 $|a_n - a_m| < \varepsilon$，$|b_n - b_m| < \varepsilon$。因此数列 $\{a_n\}$，$\{b_n\}$ 是 Cauchy 数列，根据 \textcolor{red}{Cauchy 收敛准则}，数列 $\{a_n\}$，$\{b_n\}$ 都收敛。由 $\lim_{n \to \infty} (b_n - a_n) = 0$ 知
+\[
+\lim_{n \to \infty} a_n = \lim_{n \to \infty} b_n = \xi，
+\]
+并设收敛到 $\xi$。唯一性，若另有 $\xi'$，使得 $a_n \leq \xi' \leq b_n，n = 1, 2, 3, \ldots$，且 $\lim_{n \to \infty} a_n = \lim_{n \to \infty} b_n = \xi'$，由 $\lim_{n \to \infty} (b_n - a_n) = 0$，可知 $\xi = \xi'$，证毕。
+
+
+\section*{Cauchy 收敛准则 $\Rightarrow$ 聚点定理}
+
+\textbf{证明:} 设 $S$ 是有界无穷点集，则存在闭区间 $[a, b]$，使得 $S \subseteq [a, b]$。将 $[a, b]$ 均分为
+\[
+\left[ a, \frac{a + b}{2} \right], \left[ \frac{a + b}{2}, b \right]，
+\]
+则必有其中之一闭区间含有 $S$ 中无穷个点，记此闭区间为 $[a_1, b_1]$。将 $[a_1, b_1]$ 均分为
+\[
+\left[ a_1, \frac{a_1 + b_1}{2} \right], \left[ \frac{a_1 + b_1}{2}, b_1 \right]，
+\]
+则必有其中之一闭区间含有 $S$ 中无穷个点，记此闭区间为 $[a_2, b_2]$。$\cdots$，将 $[a_{k-1}, b_{k-1}]$ 均分为
+\[
+\left[ a_{k-1}, \frac{a_{k-1} + b_{k-1}}{2} \right], \left[ \frac{a_{k-1} + b_{k-1}}{2}, b_{k-1} \right]，
+\]
+则必有其中之一闭区间含有 $S$ 中无穷个点，记此闭区间为 $[a_k, b_k]$。如此一直下去，得到一列闭区间 $\{[a_n, b_n]\}$，且
+\[
+\lim_{n \to \infty} (b_n - a_n) = \lim_{n \to \infty} \frac{1}{2^n} (b - a) = 0，
+\]
+易知 $\{a_n\}$ 单调增加，数列 $\{b_n\}$ 单调减少，且 $\forall \varepsilon > 0$，$\exists N \in \mathbb{N}^+$，使得 $b_n - a_n < \varepsilon$，于是 $\forall n, m > N$，有
+\[
+|a_n - a_m| < |b_n - a_n| < \varepsilon，
+\]
+\[
+|b_n - b_m| < |b_n - a_n| < \varepsilon，
+\]
+因此数列 $\{a_n\}$，$\{b_n\}$ 是 Cauchy 数列，根据 \textcolor{red}{Cauchy 收敛准则}，数列 $\{a_n\}$，$\{b_n\}$ 都收敛，设收敛到 $\xi$。由 $\lim_{n \to \infty} (b_n - a_n) = 0$ 知
+\[
+\lim_{n \to \infty} a_n = \lim_{n \to \infty} b_n = \xi，
+\]
+下说明 $\xi$ 是 $S$ 的一个聚点。在每个 $[a_n, b_n]$ 中取一个 $S$ 中的元素记为 $x_n$，易知 $\lim_{n \to \infty} x_n = \xi$，因此 $\alpha = \xi$ 是 $S$ 的聚点，证毕。
+
+\section*{Cauchy 收敛准则 $\Rightarrow$ 有限覆盖定理}
+
+\textbf{证明:} 设闭区间 $[a, b]$ 在实数 $R$ 上，任取闭区间 $[a, b]$ 的一个开覆盖 $\{O_{\lambda}\}$，反证法，假设闭区间 $[a, b]$ 不能被 $\{O_{\lambda}\}$ 的有限个子集覆盖，将 $[a, b]$ 二等分为
+\[
+\left[ a, \frac{a + b}{2} \right], \left[ \frac{a + b}{2}, b \right]，
+\]
+至少有其中之一不能被 $\{O_{\lambda}\}$ 的有限个子集覆盖，将此区间记为 $[a_1, b_1]$。将 $[a_1, b_1]$ 二等分为
+\[
+\left[ a_1, \frac{a_1 + b_1}{2} \right], \left[ \frac{a_1 + b_1}{2}, b_1 \right]，
+\]
+至少有其中之一不能被 $\{O_{\lambda}\}$ 的有限个子集覆盖，将此区间记为 $[a_2, b_2]$。如此下去，便可得到一列闭区间 $\{[a_n, b_n]\}$，且
+\[
+\lim_{n \to \infty} (b_n - a_n) = \lim_{n \to \infty} \left(\frac{1}{2}\right)^n (b - a) = 0。
+\]
+
+易知数列 $\{a_n\}$ 单调增加，数列 $\{b_n\}$ 单调减少，且 $\forall \varepsilon > 0$，$\exists N \in \mathbb{N}^+$，使得 $b_n - a_n < \varepsilon$，于是 $\forall n, m > N$，有
+\[
+|a_n - a_m| < |b_n - a_n| < \varepsilon，
+\]
+\[
+|b_n - b_m| < |b_n - a_n| < \varepsilon，
+\]
+因此数列 $\{a_n\}$，$\{b_n\}$ 是 Cauchy 数列，根据 \textcolor{red}{Cauchy 收敛准则}，数列 $\{a_n\}$，$\{b_n\}$ 都收敛，设收敛到 $\xi$。由 $\lim_{n \to \infty} (b_n - a_n) = 0$ 知
+\[
+\lim_{n \to \infty} a_n = \lim_{n \to \infty} b_n = \xi，
+\]
+且 $\xi \in [a, b]$，于是存在 $\{O_{\lambda}\}$ 的一个开区间 $O_{\lambda^*}$，使得 $\xi \in O_{\lambda^*}$，当 $n$ 充分大时，必有 $[a_n, b_n] \subseteq O_{\lambda^*}$ 与 $[a, b]$ 不能被 $\{O_{\lambda}\}$ 的有限个子集覆盖矛盾。因此存在 $\{O_{\lambda}\}$ 的有限个子集覆盖闭区间 $[a, b]$，证毕。
+
+
+
+\begin{theorem}[ 闭区间套定理] \label{property:cauchy3}
+（1）若 \(\{[a_n, b_n]\}\) 形成一个闭区间套，则存在唯一的实数 \(\xi\) 属于所有的闭区间 \([a_n, b_n]\)，\(n = 1, 2, 3, \cdots\)，且存在唯一的实数 \( \xi \)，使得 \( \xi \) 属于所有这些闭区间，即  \( \lim_{n \to \infty} b_n = 0 \) = \( \lim_{n \to \infty} a_n   \) =\( \xi \) 
+
+（2）\begin{enumerate}
+    \item $[a_{n+1}, b_{n+1}] \subseteq [a_n, b_n]$ 对于所有正整数 $n$ 都成立；
+    \item $\lim_{n \to \infty} (b_n - a_n) = 0$。
+\end{enumerate}
+则存在唯一的实数 $\xi$，使得
+\[
+\bigcap_{n=1}^{\infty} [a_n, b_n] = \{\xi\}。
+\]
+\end{theorem}
+
+
+\section*{闭区间套定理 $\Rightarrow$ 确界存在定理}
+
+\textbf{证明:} 设 $S$ 是非空有上界数集，任取它的一个上界 $b \notin S$，任取 $a \in S$，则 $S \subseteq [a, b]$。对 $[a, b]$ 二等分为
+\[
+\left[ a, \frac{a + b}{2} \right], \left[ \frac{a + b}{2}, b \right]，
+\]
+若 $\frac{a + b}{2}$ 非 $S$ 的上界，则记 $[a_1, b_1] = \left[ a, \frac{a + b}{2} \right]$，否则记 $[a_1, b_1] = \left[ \frac{a + b}{2}, b \right]$。对 $[a_1, b_1]$ 二等分为
+\[
+\left[ a_1, \frac{a_1 + b_1}{2} \right], \left[ \frac{a_1 + b_1}{2}, b_1 \right]，
+\]
+若 $\frac{a_1 + b_1}{2}$ 非 $S$ 的上界，则记 $[a_2, b_2] = \left[ a_1, \frac{a_1 + b_1}{2} \right]$，否则记 $[a_2, b_2] = \left[ \frac{a_1 + b_1}{2}, b_1 \right]$。依此类推，对 $[a_{n-1}, b_{n-1}]$ 二等分为
+\[
+\left[ a_{n-1}, \frac{a_{n-1} + b_{n-1}}{2} \right], \left[ \frac{a_{n-1} + b_{n-1}}{2}, b_{n-1} \right]，
+\]
+若 $\frac{a_{n-1} + b_{n-1}}{2}$ 非 $S$ 的上界，则记 $[a_n, b_n] = \left[ a_{n-1}, \frac{a_{n-1} + b_{n-1}}{2} \right]$，否则记 $[a_n, b_n] = \left[ \frac{a_{n-1} + b_{n-1}}{2}, b_{n-1} \right]$。依此类推，得到一列闭区间 $\{[a_n, b_n]\}$。易知 $\{[a_n, b_n]\}$ 满足：
+\begin{enumerate}
+    \item $\{[a_{n+1}, b_{n+1}] \subseteq [a_n, b_n]\}$ 对于所有正整数 $n$ 都成立；
+    \item $\lim_{n \to \infty} (b_n - a_n) = \lim_{n \to \infty} \left(\frac{1}{2}\right)^n (b - a) = 0$。
+\end{enumerate}
+
+因此，$\{[a_n, b_n]\}$ 形成一个闭区间套。根据 \textcolor{red}{闭区间套定理}，存在实数 $\xi \in \mathbb{R}$，使得
+\[
+a_n \leq \xi \leq b_n，\quad n = 1, 2, 3, \ldots，
+\]
+且
+\[
+\lim_{n \to \infty} a_n = \lim_{n \to \infty} b_n = \xi。
+\]
+
+下说明 $\xi$ 是 $S$ 的上确界：
+\begin{enumerate}
+    \item $\forall x \in S$，有 $x \leq \xi$；
+    \item $\forall \varepsilon > 0$，$\exists N \in \mathbb{N}^+$，使得 $\xi - a_n < \varepsilon$，即 $b < \xi + \varepsilon$，其中 $a_n \in S$。
+\end{enumerate}
+
+因此，$\xi$ 是 $S$ 的上确界，证毕。
+
+
+\section*{闭区间套定理 $\Rightarrow$ 单调有界定理}
+
+\textbf{证明:} 设数列 $\{x_n\}$ 是单调增加有上界，令 $S = \{x_1, x_2, \ldots\}$，任取它的一个上界 $b \notin S$，任取 $a \in S$，则 $S \subseteq [a, b]$。对 $[a, b]$ 二等分为
+\[
+\left[ a, \frac{a + b}{2} \right], \left[ \frac{a + b}{2}, b \right]，
+\]
+若 $\frac{a + b}{2}$ 非 $S$ 的上界，则记 $[a_1, b_1] = \left[ a, \frac{a + b}{2} \right]$，否则记 $[a_1, b_1] = \left[ \frac{a + b}{2}, b \right]$。对 $[a_1, b_1]$ 二等分为
+\[
+\left[ a_1, \frac{a_1 + b_1}{2} \right], \left[ \frac{a_1 + b_1}{2}, b_1 \right]，
+\]
+若 $\frac{a_1 + b_1}{2}$ 非 $S$ 的上界，则记 $[a_2, b_2] = \left[ a_1, \frac{a_1 + b_1}{2} \right]$，否则记 $[a_2, b_2] = \left[ \frac{a_1 + b_1}{2}, b_1 \right]$。依此类推，对 $[a_{n-1}, b_{n-1}]$ 二等分为
+\[
+\left[ a_{n-1}, \frac{a_{n-1} + b_{n-1}}{2} \right], \left[ \frac{a_{n-1} + b_{n-1}}{2}, b_{n-1} \right]，
+\]
+若 $\frac{a_{n-1} + b_{n-1}}{2}$ 非 $S$ 的上界，则记 $[a_n, b_n] = \left[ a_{n-1}, \frac{a_{n-1} + b_{n-1}}{2} \right]$，否则记 $[a_n, b_n] = \left[ \frac{a_{n-1} + b_{n-1}}{2}, b_{n-1} \right]$。依此类推，得到一列闭区间 $\{[a_n, b_n]\}$。易知 $\{[a_n, b_n]\}$ 满足：
+\begin{enumerate}
+    \item $\{[a_{n+1}, b_{n+1}] \subseteq [a_n, b_n]\}$ 对于所有正整数 $n$ 都成立；
+    \item $\lim_{n \to \infty} (b_n - a_n) = \lim_{n \to \infty} \left(\frac{1}{2}\right)^n (b - a) = 0$。
+\end{enumerate}
+
+因此，$\{[a_n, b_n]\}$ 形成一个闭区间套。根据 \textcolor{red}{闭区间套定理}，存在唯一的实数 $\xi \in \mathbb{R}$，使得
+\[
+a_n \leq \xi \leq b_n，\quad n = 1, 2, 3, \ldots，
+\]
+且
+\[
+\lim_{n \to \infty} a_n = \lim_{n \to \infty} b_n = \xi。
+\]
+
+下说明 $\xi$ 是 $S$ 的上确界。在每个 $[a_n, b_n]$ 中取某个 $x_n^k \in \{x_1, x_2, \ldots\}$，于是有 $\{x_n^k\}$ 的子列收敛到 $\xi$，即 $\lim_{k \to \infty} x_n^k = \xi$，易知 $\lim_{n \to \infty} x_n = \xi$，因此 $S$ 的上确界是 $\xi$，证毕。
+
+\section*{闭区间套定理 $\Rightarrow$ Cauchy 收敛准则}
+
+\textbf{证明:} 先证数列 $\{x_n\}$ 收敛 $\Rightarrow$ 数列 $\{x_n\}$ 是基本数列。设 $\lim_{n \to \infty} x_n = a$，则 $\forall \varepsilon > 0$，$\exists N \in \mathbb{N}^+$，使得
+\[
+\forall n, m > N，\, 都有 \, |x_n - a| < \frac{\varepsilon}{2}，\, |x_m - a| < \frac{\varepsilon}{2}，
+\]
+从而
+\[
+|x_n - x_m| \leq |x_n - a| + |x_m - a| < \varepsilon，
+\]
+因此数列 $\{x_n\}$ 是基本数列。
+
+再证数列 $\{x_n\}$ 是基本数列 $\Rightarrow$ 数列 $\{x_n\}$ 收敛。设数列 $\{x_n\}$ 是基本数列，下说明数列 $\{x_n\}$ 有界。$\forall \varepsilon > 0$，$\exists N \in \mathbb{N}^+$，$\forall n, m > N$，都有 $|x_n - x_m| < \varepsilon$。取定 $\varepsilon = 1$ 时，存在 $N_1 \in \mathbb{N}^+$，使得
+\[
+\forall n > N_1, \, |x_n - x_{N_1}| < \varepsilon，
+\]
+于是 $M = \max \{x_1, x_2, \ldots, x_{N_1}, |x_{N_1}| + 1\}$ 是数列 $\{x_n\}$ 的一个上界，
+\[
+m = \min \{x_1, x_2, \ldots, x_{N_1}, -1\}
+\]
+是数列 $\{x_n\}$ 的一个下界，因此数列 $\{x_n\}$ 有界。下说明数列 $\{x_n\}$ 收敛。将 $[m, M]$ 均分为
+\[
+\left[m, \frac{m + M}{2}\right], \left[\frac{m + M}{2}, M\right]，
+\]
+则必有其中之一闭区间含有 $\{x_n\}$ 中无穷个点，记此闭区间为 $[m_1, M_1]$。将 $[m_1, M_1]$ 均分为
+\[
+\left[m_1, \frac{m_1 + M_1}{2}\right], \left[\frac{m_1 + M_1}{2}, M_1\right]，
+\]
+则必有其中之一闭区间含有 $\{x_n\}$ 中无穷个点，记此闭区间为 $[m_2, M_2]$。$\cdots$，将 $[m_{k-1}, M_{k-1}]$ 均分为
+\[
+\left[m_{k-1}, \frac{m_{k-1} + M_{k-1}}{2}\right], \left[\frac{m_{k-1} + M_{k-1}}{2}, M_{k-1}\right]，
+\]
+则必有其中之一闭区间含有 $\{x_n\}$ 中无穷个点，记此闭区间为 $[m_k, M_k]$。如此一直下去，得到一列闭区间 $\{[m_n, M_n]\}$，且
+\[
+\lim_{n \to \infty} (M_n - m_n) = \lim_{n \to \infty} \frac{1}{2^n} (M - m) = 0，
+\]
+易知 $\{m_n\}$ 单调增加，数列 $\{M_n\}$ 单调减少，根据 \textcolor{red}{闭区间套定理}，存在实数 $\alpha, \beta$ 使得
+\[
+\lim_{n \to \infty} m_n = \alpha, \quad \lim_{n \to \infty} M_n = \beta，
+\]
+且
+\[
+m_n \leq \alpha \leq \beta \leq M_n， \quad n = 1, 2, 3, \ldots
+\]
+可知 $\lim_{n \to \infty} m_n = \alpha = \beta = \lim_{n \to \infty} M_n$，即 $\lim_{n \to \infty} m_n = \lim_{n \to \infty} M_n = \xi$。下说明 $\xi$ 是 $S$ 的一个聚点。在每个 $[m_n, M_n]$ 中取一个 $S$ 中的元素记为 $x_n$，易知 $\lim_{n \to \infty} x_n = \xi$。因此数列 $\{x_n\}$ 收敛，证毕。
+
+
+\section*{闭区间套定理 $\Rightarrow$ 聚点定理}
+
+\textbf{证明:} 设 $S$ 是有界无穷点集，则存在闭区间 $[a, b]$，使得 $S \subseteq [a, b]$。将 $[a, b]$ 均分为
+\[
+\left[ a, \frac{a + b}{2} \right], \left[ \frac{a + b}{2}, b \right]，
+\]
+则必有其中之一闭区间含有 $S$ 中无穷个点，记此闭区间为 $[a_1, b_1]$。将 $[a_1, b_1]$ 均分为
+\[
+\left[ a_1, \frac{a_1 + b_1}{2} \right], \left[ \frac{a_1 + b_1}{2}, b_1 \right]，
+\]
+则必有其中之一闭区间含有 $S$ 中无穷个点，记此闭区间为 $[a_2, b_2]$。$\cdots$，将 $[a_{k-1}, b_{k-1}]$ 均分为
+\[
+\left[ a_{k-1}, \frac{a_{k-1} + b_{k-1}}{2} \right], \left[ \frac{a_{k-1} + b_{k-1}}{2}, b_{k-1} \right]，
+\]
+则必有其中之一闭区间含有 $S$ 中无穷个点，记此闭区间为 $[a_k, b_k]$。如此一直下去，得到一列闭区间 $\{[a_n, b_n]\}$，且
+\[
+\lim_{n \to \infty} (b_n - a_n) = \lim_{n \to \infty} \frac{1}{2^n} (b - a) = 0，
+\]
+因此 $\{[a_n, b_n]\}$ 形成一个闭区间套。根据 \textcolor{red}{闭区间套定理}，存在唯一的实数 $\xi \in \mathbb{R}$，使得
+\[
+a_n \leq \xi \leq b_n，\quad n = 1, 2, 3, \ldots，
+\]
+且
+\[
+\lim_{n \to \infty} a_n = \lim_{n \to \infty} b_n = \xi。
+\]
+
+下说明 $\xi$ 是 $S$ 的一个聚点。在每个 $[a_n, b_n]$ 中取一个 $S$ 中的元素记为 $x_n$，易知 $\lim_{n \to \infty} x_n = \alpha$，因此 $\alpha$ 是 $S$ 的聚点，证毕。
+
+
+\section*{闭区间套定理 $\Rightarrow$ 有限覆盖定理}
+
+\textbf{证明:} 设闭区间 $[a, b]$ 在实数 $R$ 上，任取闭区间 $[a, b]$ 的一个开覆盖 $\{O_{\lambda}\}$，反证法，假设闭区间 $[a, b]$ 不能被 $\{O_{\lambda}\}$ 的有限个子集覆盖，将 $[a, b]$ 二等分为
+\[
+\left[ a, \frac{a + b}{2} \right], \left[ \frac{a + b}{2}, b \right]，
+\]
+至少有其中之一不能被 $\{O_{\lambda}\}$ 的有限个子集覆盖，将此区间记为 $[a_1, b_1]$。将 $[a_1, b_1]$ 二等分为
+\[
+\left[ a_1, \frac{a_1 + b_1}{2} \right], \left[ \frac{a_1 + b_1}{2}, b_1 \right]，
+\]
+至少有其中之一不能被 $\{O_{\lambda}\}$ 的有限个子集覆盖，将此区间记为 $[a_2, b_2]$。如此下去，便可得到一列闭区间 $\{[a_n, b_n]\}$，且
+\[
+\lim_{n \to \infty} (b_n - a_n) = \lim_{n \to \infty} \left(\frac{1}{2}\right)^n (b - a) = 0。
+\]
+
+因此 $\{[a_n, b_n]\}$ 形成一个闭区间套。根据 \textcolor{red}{闭区间套定理}，存在唯一的实数 $\xi$ 属于所有的闭区间 $[a_n, b_n]$，且
+\[
+\xi = \lim_{n \to \infty} a_n = \lim_{n \to \infty} b_n， \quad a_n \leq \xi \leq b_n，\quad n = 1, 2, 3, \ldots。
+\]
+
+于是存在 $\{O_{\lambda}\}$ 的一个开区间 $O_{\lambda^*}$，使得 $\xi \in O_{\lambda^*}$，当 $n$ 充分大时，必有 $[a_n, b_n] \subseteq O_{\lambda^*}$ 与 $[a, b]$ 不能被 $\{O_{\lambda}\}$ 的有限个子集覆盖矛盾。因此存在 $\{O_{\lambda}\}$ 的有限个子集覆盖闭区间 $[a, b]$，证毕。
+
+
+\begin{theorem}[ 聚点定理] \label{tabe222}
+（1）在一个有界的无限点集 $S$ 中，至少存在一个实数 $\xi$，它是这个集合的聚点。即在这个点的任意小的邻域内，总是包含这个集合中的无穷多个点。
+
+   （2） 设 $S$ 是实数集合 $\mathbb{R}$ 的一个有界无限点集，则存在一个实数 $\xi \in \mathbb{R}$，使得对于任意的 $\varepsilon > 0$，区间 $(\xi - \varepsilon, \xi + \varepsilon)$ 内总是包含 $S$ 中的无穷多个点。
+
+（3）\  \begin{itemize}
+      \item 聚点定理：在一个有界序列中，至少存在一个聚点。
+      \item 魏尔斯特拉斯定理：每个有界数列都有至少一个聚点。
+      \item 致密性定理：一个集合是致密的当且仅当它的每一个开覆盖都有有限子覆盖。
+      \item Bolzano-Weierstrass定理：任何有界数列必有一个收敛的子序列。
+    \end{itemize}
+
+\end{theorem}
+
+
+
+\section*{聚点定理 $\Rightarrow$ 确界存在定理}
+
+\textbf{证明:} 设 $S$ 是非空有上界数集，任取它的一个上界 $b \notin S$，取 $a \in S$，使得 $S \cap (a, b) \neq \emptyset$。对 $[a, b]$ 一等分为
+\[
+\left[a, \frac{a + b}{2}\right] \quad \text{和} \quad \left[\frac{a + b}{2}, b\right]，
+\]
+若 $\left[a, \frac{a + b}{2}\right] \cap S \neq \emptyset$，则记 $[a_1, b_1] = \left[a, \frac{a + b}{2}\right]$，否则记 $[a_1, b_1] = \left[\frac{a + b}{2}, b\right]$。对 $[a_1, b_1]$ 一等分为
+\[
+\left[a_1, \frac{a_1 + b_1}{2}\right] \quad \text{和} \quad \left[\frac{a_1 + b_1}{2}, b_1\right]，
+\]
+若 $\left[a_1, \frac{a_1 + b_1}{2}\right] \cap S \neq \emptyset$，则记 $[a_2, b_2] = \left[a_1, \frac{a_1 + b_1}{2}\right]$，否则记 $[a_2, b_2] = \left[\frac{a_1 + b_1}{2}, b_1\right]$。依此类推，对 $[a_{n-1}, b_{n-1}]$ 一等分为
+\[
+\left[a_{n-1}, \frac{a_{n-1} + b_{n-1}}{2}\right] \quad \text{和} \quad \left[\frac{a_{n-1} + b_{n-1}}{2}, b_{n-1}\right]，
+\]
+若 $\left[a_{n-1}, \frac{a_{n-1} + b_{n-1}}{2}\right] \cap S \neq \emptyset$，则记 $[a_n, b_n] = \left[a_{n-1}, \frac{a_{n-1} + b_{n-1}}{2}\right]$，否则记 $[a_n, b_n] = \left[\frac{a_{n-1} + b_{n-1}}{2}, b_{n-1}\right]$。依此类推，得到一列闭区间 $\{[a_n, b_n]\}$。记 $R = \{b_1, b_2, \ldots, b_n, \ldots\}$，其中如有相同项则记一个。易知集合 $R$ 有界，根据聚点定理，集合 $R$ 必有聚点记为 $\xi$，则有 $\{b_{n_k}\}$ 的子列 $\lim_{k \to \infty} b_{n_k} = \xi$。
+
+下说明 $\xi$ 是 $S$ 的上确界：
+\begin{enumerate}
+    \item $\forall x \in S$，有 $x \leq \xi$；
+    \item $\forall \varepsilon > 0$，$\exists N \in \mathbb{N}^+$，使得 $\xi - a_n < \varepsilon$，即 $b < \xi + \varepsilon$，其中 $a_n \in S$。
+\end{enumerate}
+\begin{change}
+\item 由 $|a_n - b_{n_k}| = \frac{1}{2^{n_k}} (b - a)$ 知，$\lim_{n \to \infty} a_n = \xi$；
+\item $\xi$ 是 $S$ 的一个上界，不然存在 $x_0 \in S$，使得 $x_0 > \xi$，由 $\lim_{k \to \infty} b_{n_k} = \xi$ 知，对于 $\varepsilon = x_0 - \xi$，$\exists K \in \mathbb{N}^+$，$\forall k > K$ 有 $-\varepsilon < b_{n_k} - \xi < \varepsilon$，即 $b_{n_k} - \xi < \varepsilon$，因此 $x_0 > b_{n_k}$ 是 $S$ 的上界矛盾，从而 $\xi$ 是 $S$ 的一个上界；
+ \item $\xi$ 是 $S$ 的最小上界，即 $\forall \varepsilon > 0$，$\exists K \in \mathbb{N}^+$，使得 $b_{n_k} - \varepsilon < \xi < \varepsilon$，因为 $\lim_{k \to \infty} b_{n_k} = \xi$，所以 $\forall \varepsilon > 0$，$\exists K \in \mathbb{N}^+$，使得 $-\varepsilon < b_{n_k} - \xi < \varepsilon$，从而有 $b_{n_k} - \varepsilon < \xi < \varepsilon$。
+
+综合①②③得 $\xi$ 是 $S$ 的上确界。
+\end{change}
+
+
+\section*{聚点定理 $\Rightarrow$ 单调有界定理}
+
+\textbf{证明:} 设数列 $\{x_n\}$ 是单调增加有上界，令 $S = \{x_1, x_2, \ldots\}$，任取它的一个上界 $b \notin S$，任取 $a \in S$，则 $S \subseteq [a, b]$。对 $[a, b]$ 二等分为
+\[
+\left[ a, \frac{a + b}{2} \right], \left[ \frac{a + b}{2}, b \right]，
+\]
+若 $\frac{a + b}{2}$ 非 $S$ 的上界，则记 $[a_1, b_1] = \left[ a, \frac{a + b}{2} \right]$，否则记 $[a_1, b_1] = \left[ \frac{a + b}{2}, b \right]$。对 $[a_1, b_1]$ 二等分为
+\[
+\left[ a_1, \frac{a_1 + b_1}{2} \right], \left[ \frac{a_1 + b_1}{2}, b_1 \right]，
+\]
+若 $\frac{a_1 + b_1}{2}$ 非 $S$ 的上界，则记 $[a_2, b_2] = \left[ a_1, \frac{a_1 + b_1}{2} \right]$，否则记 $[a_2, b_2] = \left[ \frac{a_1 + b_1}{2}, b_1 \right]$。依此类推，对 $[a_{n-1}, b_{n-1}]$ 二等分为
+\[
+\left[ a_{n-1}, \frac{a_{n-1} + b_{n-1}}{2} \right], \left[ \frac{a_{n-1} + b_{n-1}}{2}, b_{n-1} \right]，
+\]
+若 $\frac{a_{n-1} + b_{n-1}}{2}$ 非 $S$ 的上界，则记 $[a_n, b_n] = \left[ a_{n-1}, \frac{a_{n-1} + b_{n-1}}{2} \right]$，否则记 $[a_n, b_n] = \left[ \frac{a_{n-1} + b_{n-1}}{2}, b_{n-1} \right]$。依此类推，得到一列闭区间 $\{[a_n, b_n]\}$。易知 $\{[a_n, b_n]\}$ 满足：
+\begin{enumerate}
+    \item $\{[a_{n+1}, b_{n+1}] \subseteq [a_n, b_n]\}$ 对于所有正整数 $n$ 都成立；
+    \item $\lim_{n \to \infty} (b_n - a_n) = \lim_{n \to \infty} \left(\frac{1}{2}\right)^n (b - a) = 0$。
+\end{enumerate}
+
+因此，$\{[a_n, b_n]\}$ 形成一个闭区间套。根据 \textcolor{red}{聚点定理}，$\{[a_n, b_n]\}$ 每一个区间都至少有一个数列 $\{x_n\}$ 的聚点。又数列 $\{x_n\}$ 单调增加，且 $b_n - a_n = \frac{1}{2^n} (b - a)$。因此数列 $\{x_n\}$ 聚点唯一，设为 $\xi$，于是有 $\lim_{n \to \infty} x_n = \xi$。证毕。
+
+\section*{聚点定理 $\Rightarrow$ Cauchy 收敛准则}
+
+\textbf{证明:} 先证数列 $\{x_n\}$ 收敛 $\Rightarrow$ 数列 $\{x_n\}$ 是基本数列。设 $\lim_{n \to \infty} x_n = a$，则 $\forall \varepsilon > 0$，$\exists N \in \mathbb{N}^+$，使得
+\[
+\forall n, m > N，\, 都有 \, |x_n - a| < \frac{\varepsilon}{2}，\, |x_m - a| < \frac{\varepsilon}{2}，
+\]
+从而
+\[
+|x_n - x_m| \leq |x_n - a| + |x_m - a| < \varepsilon，
+\]
+因此数列 $\{x_n\}$ 是基本数列。
+
+再证数列 $\{x_n\}$ 是基本数列 $\Rightarrow$ 数列 $\{x_n\}$ 收敛。设数列 $\{x_n\}$ 是基本数列，下说明数列 $\{x_n\}$ 有界。$\forall \varepsilon > 0$，$\exists N \in \mathbb{N}^+$，$\forall n, m > N$，都有 $|x_n - x_m| < \varepsilon$。取定 $\varepsilon = 1$ 时，存在 $N_1 \in \mathbb{N}^+$，使得
+\[
+\forall n > N_1, \, |x_n - x_{N_1}| < \varepsilon，
+\]
+于是 $M = \max \{x_1, x_2, \ldots, x_{N_1}, |x_{N_1}| + 1\}$ 是数列 $\{x_n\}$ 的一个上界，
+\[
+m = \min \{x_1, x_2, \ldots, x_{N_1}, -1\}
+\]
+是数列 $\{x_n\}$ 的一个下界，因此数列 $\{x_n\}$ 有界。下说明数列 $\{x_n\}$ 收敛。将 $[m, M]$ 均分为
+\[
+\left[m, \frac{m + M}{2}\right], \left[\frac{m + M}{2}, M\right]，
+\]
+则必有其中之一闭区间含有 $\{x_n\}$ 中无穷个点，记此闭区间为 $[m_1, M_1]$。将 $[m_1, M_1]$ 均分为
+\[
+\left[m_1, \frac{m_1 + M_1}{2}\right], \left[\frac{m_1 + M_1}{2}, M_1\right]，
+\]
+则必有其中之一闭区间含有 $\{x_n\}$ 中无穷个点，记此闭区间为 $[m_2, M_2]$。$\cdots$，将 $[m_{k-1}, M_{k-1}]$ 均分为
+\[
+\left[m_{k-1}, \frac{m_{k-1} + M_{k-1}}{2}\right], \left[\frac{m_{k-1} + M_{k-1}}{2}, M_{k-1}\right]，
+\]
+则必有其中之一闭区间含有 $\{x_n\}$ 中无穷个点，记此闭区间为 $[m_k, M_k]$。如此一直下去，得到一列闭区间 $\{[m_n, M_n]\}$，且
+\[
+\lim_{n \to \infty} (M_n - m_n) = \lim_{n \to \infty} \frac{1}{2^n} (M - m) = 0，
+\]
+易知 $\{m_n\}$ 单调增加，数列 $\{M_n\}$ 单调减少，根据 \textcolor{red}{聚点定理}，存在实数 $\alpha, \beta$ 使得
+\[
+\lim_{n \to \infty} m_n = \alpha, \quad \lim_{n \to \infty} M_n = \beta，
+\]
+且
+\[
+m_n \leq \alpha \leq \beta \leq M_n， \quad n = 1, 2, 3, \ldots
+\]
+可知 $\lim_{n \to \infty} m_n = \alpha = \beta = \lim_{n \to \infty} M_n$。再根据数列 $\{x_n\}$ 是基本数列 $\Rightarrow$ 数列 $\{x_n\}$ 收敛，设数列 $\{x_n\}$ 是基本数列，下说明数列 $\{x_n\}$ 有界。由此得证。
+
+
+\section*{聚点定理 $\Rightarrow$ 闭区间套定理}
+
+\textbf{证明:} 设一列闭区间 $\{[a_n, b_n]\}$ 形成一个闭区间套，则数列 $\{a_n\}$, $\{b_n\}$ 有界，存在性，根据 \textcolor{red}{聚点定理}，存在实数 $\alpha, \beta$，子列 $\{a_{n_k}\} \subseteq \{a_n\}$，子列 $\{b_{n_k}\} \subseteq \{b_n\}$，使得 $\lim_{k \to \infty} a_{n_k} = \alpha$，$\lim_{k \to \infty} b_{n_k} = \beta$。
+
+由数列 $\{a_n\}$ 单调递增有上界，数列 $\{b_n\}$ 单调递减有下界知 $\lim_{n \to \infty} a_n = \alpha$，$\lim_{n \to \infty} b_n = \beta$，且 $\alpha \leq a_n \leq b_n \leq \beta$，$n = 1, 2, 3, \ldots$。又 $\lim_{n \to \infty} (b_n - a_n) = 0$，于是
+\[
+\lim_{n \to \infty} a_n = \alpha = \beta = \lim_{n \to \infty} b_n。
+\]
+
+唯一性：若另有 $\alpha'$，使得 $a_n \leq \alpha' \leq b_n，n = 1, 2, 3, \ldots$ 且 $\lim_{n \to \infty} a_n = \alpha'，$由 $\lim_{n \to \infty} (b_n - a_n) = 0$，可知 $\alpha = \alpha'$。证毕。
+
+
+\section*{聚点定理 $\Rightarrow$ 有限覆盖定理}
+
+\textbf{证明:} 设闭区间 $[a, b]$ 在实数 $R$ 上，任取闭区间 $[a, b]$ 的一个开覆盖 $\{O_{\lambda}\}$，反证法，假设闭区间 $[a, b]$ 不能被 $\{O_{\lambda}\}$ 的有限个子集覆盖，将 $[a, b]$ 二等分为
+\[
+\left[ a, \frac{a + b}{2} \right], \left[ \frac{a + b}{2}, b \right]，
+\]
+至少有其中之一不能被 $\{O_{\lambda}\}$ 的有限个子集覆盖，将此区间记为 $[a_1, b_1]$。将 $[a_1, b_1]$ 二等分为
+\[
+\left[ a_1, \frac{a_1 + b_1}{2} \right], \left[ \frac{a_1 + b_1}{2}, b_1 \right]，
+\]
+至少有其中之一不能被 $\{O_{\lambda}\}$ 的有限个子集覆盖，将此区间记为 $[a_2, b_2]$。如此下去，便可得到一列闭区间 $\{[a_n, b_n]\}$，且
+\[
+\lim_{n \to \infty} (b_n - a_n) = \lim_{n \to \infty} \left(\frac{1}{2}\right)^n (b - a) = 0。
+\]
+
+易知数列 $\{a_n\}$ 单调增加有上界，数列 $\{b_n\}$ 单调减少有下界。根据 \textcolor{red}{聚点定理}，存在实数 $\alpha$，使得
+\[
+\lim_{n \to \infty} a_n = \alpha， \quad \lim_{n \to \infty} b_n = \alpha。
+\]
+
+于是存在 $\{O_{\lambda}\}$ 的一个开区间 $O_{\lambda^*}$，使得 $\alpha \in O_{\lambda^*}$，当 $n$ 充分大时，必有 $[a_n, b_n] \subseteq O_{\lambda^*}$，与 $[a_n, b_n]$ 不能被 $\{O_{\lambda}\}$ 的有限个子集覆盖矛盾。因此存在 $\{O_{\lambda}\}$ 的有限个子集覆盖闭区间 $[a, b]$，证毕。
+
+
+
+
+\begin{theorem}[ 有限覆盖定理] \label{ pro:js5}
+（1）一个集合是紧的当且仅当它是闭且有界的。
+
+（2）若一个开覆盖 \( S \) 覆盖了闭区间 \([a, b]\)，即 \([a, b] \subseteq \bigcup_{i \in I} U_i\)，其中 \( U_i \) 是 \( S \) 中的开区间，则存在有限个开区间 \( U_{i_1}, U_{i_2}, \ldots, U_{i_n} \) 使得 \([a, b] \subseteq \bigcup_{j=1}^n U_{i_j}\)。
+
+\end{theorem}
+
+
+\section*{有限覆盖定理 $\Rightarrow$ 确界存在定理}
+
+\textbf{证明:} 反证法，设 $S$ 是非空有上界的实数集，假设 $S$ 没有上确界（最小上界）。任取它的一个上界 $b \notin S$，任取 $a \in S$，则 $\forall x \in [a, b]$ 有：
+\begin{enumerate}
+    \item $x$ 是 $S$ 的一个上界，由于 $S$ 无最小上界，因此 $\exists x' \in [a, b]$，$x'$ 是 $S$ 的一个上界，且 $x' < x$，从而存在 $x$ 的一个开邻域 $O_x$，其中 $O_x$ 中的元素都是 $S$ 的上界；
+    \item $x$ 不是 $S$ 的上界，则存在 $x'' \in S \cap [a, b]，且 x'' > x$，于是存在 $x$ 的一个开邻域 $O_x$，其中 $O_x$ 中的元素都不是 $S$ 的上界。
+\end{enumerate}
+
+因此 $[a, b]$ 上的每个点都能找到一个开邻域 $O_x$，它要么属于第一类（每个点都为 $S$ 的上界），要么属于第二类（每个点都不是 $S$ 的上界），从而 $\{O_x \mid x \in [a, b]\}$ 是 $[a, b]$ 的一个开覆盖。根据 \textcolor{red}{有限覆盖定理}，存在有限子集 $\{O_{x_1}, O_{x_2}, \ldots, O_{x_k}\}$，使得 $[a, b] \subseteq \bigcup_{i=1}^{k} O_{x_i}$。又因为 $b$ 所在的开区间属于第一类，相邻接的开区间有公共点，也应为第一类的，经过有限邻接，可知 $a$ 所在的开区间也是第一类的，与 $a$ 不是 $S$ 的上界矛盾，因此 $S$ 有上确界。证毕。
+
+
+
+\section*{有限覆盖定理 $\Rightarrow$ 单调有界定理}
+
+\textbf{证明:} 用反证法，设数列 $\{x_n\}$ 单调递增有上界，于是存在 $[a, b] \subseteq \mathbb{R}$ 使得 $\forall n \in \mathbb{N}^+$，$x_n \in [a, b]$。假设 $\{x_n\}$ 不收敛，则 $\forall x \in [a, b]$，必存在 $x$ 的某个开邻域 $O_x$ 只含有数列 $\{x_n\}$ 的有限个点。令 $S = \{O_x \mid x \in [a, b]\}$，则 $S$ 是 $[a, b]$ 的一个开覆盖。根据 \textcolor{red}{有限覆盖定理}，$S$ 的有限子集 $\{O_1, O_2, \ldots, O_k\}$ 可以覆盖 $[a, b]$，即 $[a, b] \subseteq \bigcup_{i=1}^{k} O_i$。但每个 $O_i$ 中只能含有数列 $\{x_n\}$ 的有限个点，与 $\{x_n\}$ 在 $[a, b]$ 中齐矛盾，因此数列 $\{x_n\}$ 必收敛。证毕。
+
+\section*{有限覆盖定理 $\Rightarrow$ Cauchy 收敛准则}
+
+\textbf{证明:} 先证数列 $\{x_n\}$ 收敛 $\Rightarrow$ 数列 $\{x_n\}$ 是基本数列。设 $\lim_{n \to \infty} x_n = a$，则 $\forall \varepsilon > 0$，$\exists N \in \mathbb{N}^+$，使得
+\[
+\forall n, m > N, \text{都有} |x_n - a| < \frac{\varepsilon}{2}, |x_m - a| < \frac{\varepsilon}{2},
+\]
+从而
+\[
+|x_n - x_m| \leq |x_n - a| + |x_m - a| < \varepsilon，
+\]
+因此数列 $\{x_n\}$ 是基本数列。
+
+再证数列 $\{x_n\}$ 是基本数列 $\Rightarrow$ 数列 $\{x_n\}$ 收敛。设数列 $\{x_n\}$ 是基本数列，下说明数列 $\{x_n\}$ 有界。$\forall \varepsilon > 0$，$\exists N \in \mathbb{N}^+$，$\forall n, m > N$，都有 $|x_n - x_m| < \varepsilon$。取定 $\varepsilon = 1$ 时，存在 $N_1 \in \mathbb{N}^+$，使得
+\[
+\forall n > N_1, |x_n - x_{N_1}| < \varepsilon，
+\]
+
+
+于是 $M = \max \{x_1, x_2, \ldots, x_{N_1}, |x_{N_1}| + 1\}$ 是数列 $\{x_n\}$ 的一个上界，
+\[
+m = \min \{x_1, x_2, \ldots, x_{N_1}, -1\}
+\]
+是数列 $\{x_n\}$ 的一个下界，因此数列 $\{x_n\}$ 有界。下说明数列 $\{x_n\}$ 收敛。假设数列 $\{x_n\}$ 不存在收敛子列，则 $\forall x \in [m, M]$，存在 $x$ 的一个开邻域 $O_x$，使得 $O_x$ 至多含有数列 $\{x_n\}$ 的有限项，令 $D = \{O_x \mid x \in [m, M]\}$，则 $D$ 是 $[m, M]$ 的一个开覆盖。根据 \textcolor{red}{有限覆盖定理}，存在 $D$ 的有限个子集 $\{O_{x_1}, O_{x_2}, \ldots, O_{x_k}\}$，使得 $[m, M] \subseteq \bigcup_{i=1}^{k} O_{x_i}$。而 $\bigcup_{i=1}^{k} O_{x_i}$ 中只含有数列 $\{x_n\}$ 的有限项，与 $[m, M] \subseteq \bigcup_{i=1}^{k} O_{x_i}$ 矛盾，因此数列 $\{x_n\}$ 存在收敛子列。设存在实数 $\xi$，数列 $\{x_n\}$ 的一个子列 $\{x_{n_k}\}$，使得
+\[
+\lim_{k \to \infty} x_{n_k} = \xi，
+\]
+又数列 $\{x_n\}$ 是基本数列，则
+\[
+\forall \varepsilon > 0, \exists N \in \mathbb{N}^+, \forall n, m > N, |x_n - x_m| < \frac{\varepsilon}{2}，
+\]
+而根据 $\lim_{k \to \infty} x_{n_k} = \xi$ 有
+\[
+\forall \varepsilon > 0, \exists N \in \mathbb{N}^+, n_k > N, k > K，有 |x_{n_k} - \xi| < \frac{\varepsilon}{2}。
+\]
+于是
+\[
+\forall \varepsilon > 0, \forall n > N, k > K 有 |x_n - \xi| \leq |x_n - x_{n_k}| + |x_{n_k} - \xi| < \varepsilon。
+\]
+因此数列 $\{x_n\}$ 收敛。证毕。
+
+
+
+\section*{有限覆盖定理 $\Rightarrow$ 闭区间套定理}
+
+\textbf{证明:} 设一列闭区间 $\{[a_n, b_n]\}$ 形成一个闭区间套，存在性，下说明 $\bigcap_{n=1}^{\infty} [a_n, b_n] \neq \varnothing$。假设 $\bigcap_{n=1}^{\infty} [a_n, b_n] = \varnothing$，则 $\forall x \in [a, b]$，存在一个开邻域 $O_x$，使得 $O_x$ 不全与 $[a_n, b_n]$ 相交，即存在 $N \in \mathbb{N}^+$，使得 $O_x \cap [a_N, b_N] = \varnothing$。令 $S = \{O_x \mid x \in [a, b]\}$，于是 $S$ 是 $[a, b]$ 的一个开覆盖。根据 \textcolor{red}{有限覆盖定理}，存在 $S$ 的有限个子集 $\{O_{x_1}, O_{x_2}, \ldots, O_{x_k}\}$，使得 $[a, b] \subseteq \bigcup_{i=1}^{k} O_{x_i}$。而 $\bigcap_{n=1}^{\infty} [a_n, b_n] = \varnothing$，$i=1,2,\ldots,k$。取 $[a_{n_i}, b_{n_i}]$ 中最小的区间为 $[a_0, b_0]$，于是
+\[
+[a_0, b_0] \cap \bigcup_{i=1}^{k} O_{x_i} = \varnothing
+\]
+与 $[a_0, b_0] \subseteq \bigcup_{i=1}^{k} O_{x_i}$ 矛盾。因此 $\bigcap_{n=1}^{\infty} [a_n, b_n] \neq \varnothing$。即存在 $\xi \in \bigcap_{n=1}^{\infty} [a_n, b_n]$。由于 $\{[a_n, b_n]\}$ 为闭区间套，得 $\lim_{n \to \infty} (b_n - a_n) \to 0$，故 $\xi$ 唯一。若另有 $\xi' \in \bigcap_{n=1}^{\infty} [a_n, b_n]$，则由 $|\xi - \xi'| \leq |b_n - a_n| \to 0$（$n \to \infty$）知，$\xi = \xi'$。于是 $\xi = \bigcap_{n=1}^{\infty} [a_n, b_n]$。证毕。
+
+
+\section*{有限覆盖定理 $\Rightarrow$ 聚点定理}
+
+\textbf{证明:} 设 $S$ 是有界无穷点集，则存在闭区间 $[a, b]$，使得 $S \subseteq [a, b]$。
+
+情形一，存在 $\xi \in [a, b]$，$\xi$ 的任意邻域都包含 $S$ 中的无限项，则在开区间 $\left(\xi - \frac{1}{k}, \xi + \frac{1}{k}\right)$ 中任取 $S$ 中的一项记为 $x_k$，其中 $x_k$ 取与 $x_{k-1}$ 相异的项，$k = 1, 2, 3, \ldots$，于是 $\lim_{n \to \infty} x_n = \xi$，因此 $\xi$ 为数集 $S$ 的聚点；
+
+情形二，不存在情形一中的 $\xi$，即 $\forall x \in [a, b]$，存在 $x$ 的一个开邻域 $O_x$，使得 $O_x$ 只含有数集 $S$ 中的有限项。令 $D = \{O_x \mid x \in [a, b]\}$，则 $D$ 是 $[a, b]$ 的一个开覆盖。根据 \textcolor{red}{有限覆盖定理}，存在 $D$ 的有限个子集 $\{O_{x_1}, O_{x_2}, \ldots, O_{x_k}\}$，使得 $[a, b] \subseteq \bigcup_{i=1}^{k} O_{x_i}$，而 $\bigcup_{i=1}^{k} O_{x_i}$ 中只含有数集 $S$ 中的有限项，与 $S \subseteq [a, b] \subseteq \bigcup_{i=1}^{k} O_{x_i}$ 矛盾，于是只可能情形一成立，因此数集 $S$ 必有聚点，证毕。
+
+\chapter{数学分析、实分析、泛函分析}
+\section*{Heine-Borel 定理}
+在实数空间 $\mathbb{R}^n$ 中，一个子集 $S \subseteq \mathbb{R}^n$ 是紧的，当且仅当它是闭且有界的。
+
+\t{证明}
+
+\subsection*{必要性}
+如果 $S$ 是紧的，那么 $S$ 是闭且有界的。
+
+\subsubsection*{有界性}
+假设 $S$ 是紧的。若 $S$ 不有界，那么对于每个正整数 $k$，存在 $x_k \in S$，使得 $\|x_k\| \ge k$。这意味着我们可以在 $S$ 中找到一个无穷序列 $\{x_k\}$ 使得 $\|x_k\| \to \infty$。但由于 $S$ 是紧的，$\{x_k\}$ 必须有一个收敛的子列。然而，这个子列的极限必须在 $S$ 中，并且它的极限必定是无穷大的，这与 $S$ 是紧的矛盾。所以 $S$ 必须是有界的。
+
+\subsubsection*{闭性}
+假设 $S$ 是紧的。如果 $S$ 不是闭的，那么存在一个点 $x \in \overline{S} \setminus S$，其中 $\overline{S}$ 表示 $S$ 的闭包。由于 $x \notin S$，但 $x \in \overline{S}$，所以存在 $S$ 中的一个序列 $\{x_k\}$ 收敛于 $x$。由于 $S$ 是紧的，$\{x_k\}$ 的收敛极限 $x$ 必须在 $S$ 中，这与 $x \notin S$ 矛盾。因此，$S$ 必须是闭的。
+
+\subsection*{充分性}
+如果 $S$ 是闭且有界的，那么 $S$ 是紧的。
+
+根据 Bolzano-Weierstrass 定理，任何在 $\mathbb{R}^n$ 中的有界序列都有一个收敛子列。因为 $S$ 是有界的，所以 $S$ 中的任意序列必然有一个有界子序列。根据 Bolzano-Weierstrass 定理，这个有界子序列有一个收敛子列。
+
+我们需要证明这个收敛子列的极限点也在 $S$ 中。因为 $S$ 是闭的，所以所有极限点都在 $S$ 中。于是，这个收敛子列的极限点在 $S$ 中，这意味着 $S$ 是序列紧的。
+
+在 $\mathbb{R}^n$ 中，序列紧性和覆盖紧性等价。因此，$S$ 是覆盖紧的。
+
+\section*{结论}
+综上所述，我们证明了在 $\mathbb{R}^n$ 中，Heine-Borel 定理成立：一个子集 $S \subseteq \mathbb{R}^n$ 是紧的，当且仅当它是闭且有界的。
+
+
+\newpage
+
+任意数列都存在单调子列。
+
+\section*{证明}
+设数列为 $\{a_n\}$，下面分两种情形来讨论：
+
+1. 若对任何正整数 $k$，数列 $\{a_{k+n}\}$ 有最大项。设 $\{a_{k+n}\}$ 的最大项为 $a_{n_1}$，因 $\{a_{n_1+n}\}$ 亦有最大项，设其最大项为 $a_{n_2}$，显然有 $n_2 > n_1$，且因 $a_{n_1}$ 是 $\{a_{n_1+n}\}$ 的一个子列，故
+   \[
+   a_{n_2} \leq a_{n_1};
+   \]
+   同理存在 $n_3 > n_2$，使得
+   \[
+   a_{n_3} \leq a_{n_2};
+   \]
+   \[
+   \vdots
+   \]
+   这样就得到一个单调递减的子列 $\{a_{n_k}\}$。
+
+2. 至少存在某正整数 $k$，数列 $\{a_{k+n}\}$ 没有最大项。先取 $n_1 = k+1$，因 $\{a_{k+n}\}$ 没有最大项，故 $a_{n_1}$ 后面总存在项 $a_{n_2} (n_2 > n_1)$，使得
+   \[
+   a_{n_2} > a_{n_1};
+   \]
+   同理在 $a_{n_2}$ 后面的项 $a_{n_3} (n_3 > n_2)$，使得
+   \[
+   a_{n_3} > a_{n_2};
+   \]
+   \[
+   \vdots
+   \]
+   这样就得到一个严格递增的子列 $\{a_{n_k}\}$。
+
+\chapter{代数、几何、微分方程、拓扑、分数阶微分方程}
+
+敬请期待$\ldots$
+
+
+\end{document}
